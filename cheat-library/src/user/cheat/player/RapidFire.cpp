@@ -336,4 +336,3 @@ namespace cheat::feature
 		CALL_ORIGIN(VCAnimatorEvent_HandleProcessItem_Hook, __this, processItem, processStateInfo, mode, method);
 	}
 }
-

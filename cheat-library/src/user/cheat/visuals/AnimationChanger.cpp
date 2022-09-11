@@ -255,7 +255,7 @@ namespace cheat::feature
             {
                 if (ImGui::BeginCombo("Animations", f_Animation.value().c_str()))
                 {
-                    for (auto &animation : animations)
+                    for (auto& animation : animations)
                     {
                         bool is_selected = (f_Animation.value().c_str() == animation);
                         if (ImGui::Selectable(animation.c_str(), is_selected))

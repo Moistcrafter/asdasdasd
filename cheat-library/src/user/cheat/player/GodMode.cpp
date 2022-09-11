@@ -4,7 +4,7 @@
 #include <helpers.h>
 #include <cheat/game/EntityManager.h>
 
-namespace cheat::feature 
+namespace cheat::feature
 {
     GodMode::GodMode() : Feature(),
         NFEX(f_Enabled, "God mode", "m_GodMode", "Player", false, false)
@@ -31,7 +31,7 @@ namespace cheat::feature
         return f_Enabled;
     }
 
-    void GodMode::DrawStatus() 
+    void GodMode::DrawStatus()
     {
         ImGui::Text("God Mode");
     }
@@ -42,23 +42,23 @@ namespace cheat::feature
         return instance;
     }
 
-	// Attack immunity (return false when target is avatar, that mean avatar entity isn't attackable)
-	bool GodMode::Miscs_CheckTargetAttackable_Hook(app::BaseEntity* attacker, app::BaseEntity* target, MethodInfo* method)
-	{
+    // Attack immunity (return false when target is avatar, that mean avatar entity isn't attackable)
+    bool GodMode::Miscs_CheckTargetAttackable_Hook(app::BaseEntity* attacker, app::BaseEntity* target, MethodInfo* method)
+    {
         auto& gm = GodMode::GetInstance();
         auto& manager = game::EntityManager::instance();
         auto entity = manager.entity(target);
-		if (gm.f_Enabled && entity->isAvatar())
-			return false;
+        if (gm.f_Enabled && entity->isAvatar())
+            return false;
 
-		return CALL_ORIGIN(Miscs_CheckTargetAttackable_Hook, attacker, target, method);
-	}
+        return CALL_ORIGIN(Miscs_CheckTargetAttackable_Hook, attacker, target, method);
+    }
 
-	// Raised when avatar fall on ground.
+    // Raised when avatar fall on ground.
     // Sending fall speed, and how many time pass from gain max fall speed (~30m/s).
     // To disable fall damage reset reachMaxDownVelocityTime and decrease fall velocity.
-	void GodMode::VCHumanoidMove_NotifyLandVelocity_Hook(app::VCHumanoidMove* __this, app::Vector3 velocity, float reachMaxDownVelocityTime, MethodInfo* method)
-	{
+    void GodMode::VCHumanoidMove_NotifyLandVelocity_Hook(app::VCHumanoidMove* __this, app::Vector3 velocity, float reachMaxDownVelocityTime, MethodInfo* method)
+    {
         auto& gm = GodMode::GetInstance();
 		if (gm.f_Enabled && -velocity.y > 13)
 		{
@@ -95,7 +95,7 @@ namespace cheat::feature
         if (!f_Enabled)
             return false;
 
-		auto actorModifier = CastTo<app::MoleMole_ActorModifier>(arg, *app::MoleMole_ActorModifier__TypeInfo);
+        auto actorModifier = CastTo<app::MoleMole_ActorModifier>(arg, *app::MoleMole_ActorModifier__TypeInfo);
         if (actorModifier == nullptr)
             return false;
 

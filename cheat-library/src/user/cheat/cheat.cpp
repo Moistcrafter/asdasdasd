@@ -12,6 +12,7 @@
 #include <cheat/misc/Debug.h>
 #include <cheat/misc/About.h>
 #include <cheat/misc/sniffer/PacketSniffer.h>
+#include <cheat/misc/WindSeedBypass.h>
 
 #include <cheat/player/GodMode.h>
 #include <cheat/player/InfiniteStamina.h>
@@ -79,12 +80,13 @@ namespace cheat
 
 #define FEAT_INST(name) &feature::##name##::GetInstance()
 		manager.AddFeatures({
-			&protectionBypass,
+			//&protectionBypass,
 			FEAT_INST(Settings),
 			FEAT_INST(Hotkeys),
 			FEAT_INST(Debug),
 			FEAT_INST(About),
 			FEAT_INST(PacketSniffer),
+			FEAT_INST(WindSeedBypass),
 
 			FEAT_INST(GodMode),
 			FEAT_INST(InfiniteStamina),
@@ -104,7 +106,7 @@ namespace cheat
 			FEAT_INST(DumbEnemies),
 			FEAT_INST(FreezeEnemies),
 			FEAT_INST(ElementalSight),
-			FEAT_INST(KillAura),
+			//FEAT_INST(KillAura),
 			FEAT_INST(AutoChallenge),
 			FEAT_INST(MobVacuum),
 			FEAT_INST(FakeTime),
@@ -118,8 +120,8 @@ namespace cheat
 			FEAT_INST(ESP),
 			FEAT_INST(InteractiveMap),
 
-			FEAT_INST(AutoFish),
-			FEAT_INST(AutoCook),
+			//FEAT_INST(AutoFish),
+			//FEAT_INST(AutoCook),
 
 			FEAT_INST(CustomWeather),
 

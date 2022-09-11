@@ -2,11 +2,11 @@
 #include <cheat-base/cheat/Feature.h>
 #include <cheat-base/config/config.h>
 
-namespace cheat::feature 
+namespace cheat::feature
 {
 
 	class GodMode : public Feature
-    {
+	{
 	public:
 		config::Field<config::Toggle<Hotkey>> f_Enabled;
 
@@ -17,7 +17,7 @@ namespace cheat::feature
 
 		bool NeedStatusDraw() const override;
 		void DrawStatus() override;
-	
+
 	private:
 
 		bool NeedBlockHanlerModifierThinkTimeUp(app::Object* arg);
@@ -30,4 +30,3 @@ namespace cheat::feature
 		GodMode();
 	};
 }
-
